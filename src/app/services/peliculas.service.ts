@@ -73,6 +73,16 @@ export class PeliculasService {
       )
   }
 
+  getPeliculaGenero(id: number): Observable<Movie[]>{
+    return this.http.get<CarteleraResponse>(`${this.baseUrl}/keyword/${id}/movies`, { params: this.params })
+    .pipe(
+      map(resp => {
+        return resp.results;
+      }),
+      catchError( err => of(null))
+    )
+  }
+
   getPeliculaDetalles(id: string) {
     return this.http.get<MovieResponse>(`${this.baseUrl}/movie/${id}`, {
       params: this.params
