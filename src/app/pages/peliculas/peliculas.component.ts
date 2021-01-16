@@ -44,8 +44,12 @@ export class PeliculasComponent implements OnInit, OnDestroy {
       .subscribe(movies => {
         // console.log(resp.results);
         this.movies = movies;
-        this.moviesSlideShow = movies;
       });
+    
+    this._ps.getRecomendados()
+      .subscribe(movies => {
+        this.moviesSlideShow = movies;
+      })
   }
 
 

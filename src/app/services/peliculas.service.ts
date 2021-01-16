@@ -63,6 +63,16 @@ export class PeliculasService {
 
   }
 
+  getRecomendados():Observable<Movie[]> {
+    return this.http.get<CarteleraResponse>(`${this.baseUrl}/movie/top_rated`, { params: this.params })
+      .pipe(
+        map(resp => {
+          return resp.results;
+        }),
+        catchError( err => of(null))
+      )
+  }
+
   getPeliculaDetalles(id: string) {
     return this.http.get<MovieResponse>(`${this.baseUrl}/movie/${id}`, {
       params: this.params
