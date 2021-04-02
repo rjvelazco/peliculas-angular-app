@@ -57,5 +57,4 @@ export class PeliculasComponent implements OnInit, OnDestroy {
     this._ps.resetCarteleraPage();
   }
 
-
 }
